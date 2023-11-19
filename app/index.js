@@ -8,14 +8,13 @@ const Index = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.navigate('select'); // リダイレクト先の画面名に合わせて変更
+      navigation.navigate('select');
     }, 4000);
 
     return () => clearTimeout(timer);
   }, [navigation]);
 
   return (
-    // ここにローディング画面のコンポーネントを配置する
     <Loading />
   );
 };

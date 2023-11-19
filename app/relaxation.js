@@ -1,9 +1,24 @@
-import React, { useEffect, useRef } from "react";
-import { StyleSheet, View, Text, TextInput, Animated } from 'react-native';
+import React, { useState, useEffect, useRef } from "react";
+import { StyleSheet, View, Text, TextInput, Animated, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-paper';
 import { Link } from "expo-router";
 
 const Relaxation = () => {
+
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [count, setCount] = useState(0);
+
+  const handleTagPress = (tagNumber) => {
+    if (selectedTags.includes(tagNumber)) {
+      setSelectedTags(selectedTags.filter(tag => tag !== tagNumber));
+      setCount(count - 1);
+    } else {
+      if (count < 5) {
+        setSelectedTags([...selectedTags, tagNumber]);
+        setCount(count + 1);
+      }
+    }
+  };
 
   const anim_1 = useRef(new Animated.Value(0)).current;
   const anim_2 = useRef(new Animated.Value(0)).current;
@@ -110,40 +125,64 @@ const Relaxation = () => {
     opacity: anim_10
   };
 
+  useEffect(() => {
+    setCount(selectedTags.length);
+  }, [selectedTags]);
+
   return (
     <View style={[styles.container]}>
       <TextInput style={[styles.search]}> serach...</TextInput>
-      <Animated.View style={[styles.tag, styles.tag_1, anim_1Style]}>
-        <Text style={[styles.tagText]}>#歴史的な場所</Text>
-      </Animated.View>
-      <Animated.View style={[styles.tag, styles.tag_2, anim_2Style]}>
-        <Text style={[styles.tagText]}>#瞑想</Text>
-      </Animated.View>
-      <Animated.View style={[styles.tag, styles.tag_3, anim_3Style]}>
-        <Text style={[styles.tagText]}>#冒険とアウトドア</Text>
-      </Animated.View>
-      <Animated.View style={[styles.tag, styles.tag_4, anim_4Style]}>
-        <Text style={[styles.tagText]}>#文化と芸術</Text>
-      </Animated.View>
-      <Animated.View style={[styles.tag, styles.tag_5, anim_5Style]}>
-        <Text style={[styles.tagText]}>#自然の奇跡</Text>
-      </Animated.View>
-      <Animated.View style={[styles.tag, styles.tag_6, anim_6Style]}>
-        <Text style={[styles.tagText]}>#スピリチュアル</Text>
-      </Animated.View>
-      <Animated.View style={[styles.tag, styles.tag_7, anim_7Style]}>
-        <Text style={[styles.tagText]}>#動物</Text>
-      </Animated.View>
-      <Animated.View style={[styles.tag, styles.tag_8, anim_8Style]}>
-        <Text style={[styles.tagText]}>#フェスティバル</Text>
-      </Animated.View>
-      <Animated.View style={[styles.tag, styles.tag_9, anim_9Style]}>
-        <Text style={[styles.tagText]}>#ロマンティック</Text>
-      </Animated.View>
-      <Animated.View style={[styles.tag, styles.tag_10, anim_10Style]}>
-        <Text style={[styles.tagText]}>#自然を満喫</Text>
-      </Animated.View>
-      <Text style={[styles.text]}>0/5</Text>
+      <TouchableOpacity onPress={() => handleTagPress(1)}>
+        <Animated.View style={[styles.tag, styles.tag_1, anim_1Style, selectedTags.includes(1) && styles.selectedTag]}>
+          <Text style={styles.tagText}>#歴史的な場所</Text>
+        </Animated.View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => handleTagPress(2)}>
+        <Animated.View style={[styles.tag, styles.tag_2, anim_2Style, selectedTags.includes(2) && styles.selectedTag]}>
+          <Text style={styles.tagText}>#瞑想</Text>
+        </Animated.View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => handleTagPress(3)}>
+        <Animated.View style={[styles.tag, styles.tag_3, anim_3Style, selectedTags.includes(3) && styles.selectedTag]}>
+          <Text style={styles.tagText}>#冒険とアウトドア</Text>
+        </Animated.View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => handleTagPress(4)}>
+        <Animated.View style={[styles.tag, styles.tag_4, anim_4Style, selectedTags.includes(4) && styles.selectedTag]}>
+          <Text style={styles.tagText}>#文化と芸術</Text>
+        </Animated.View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => handleTagPress(5)}>
+        <Animated.View style={[styles.tag, styles.tag_5, anim_5Style, selectedTags.includes(5) && styles.selectedTag]}>
+          <Text style={styles.tagText}>#自然の奇跡</Text>
+        </Animated.View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => handleTagPress(6)}>
+        <Animated.View style={[styles.tag, styles.tag_6, anim_6Style, selectedTags.includes(6) && styles.selectedTag]}>
+          <Text style={styles.tagText}>#スピリチュアル</Text>
+        </Animated.View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => handleTagPress(7)}>
+        <Animated.View style={[styles.tag, styles.tag_7, anim_7Style, selectedTags.includes(7) && styles.selectedTag]}>
+          <Text style={styles.tagText}>#動物</Text>
+        </Animated.View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => handleTagPress(8)}>
+        <Animated.View style={[styles.tag, styles.tag_8, anim_8Style, selectedTags.includes(8) && styles.selectedTag]}>
+          <Text style={styles.tagText}>#フェスティバル</Text>
+        </Animated.View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => handleTagPress(9)}>
+        <Animated.View style={[styles.tag, styles.tag_9, anim_9Style, selectedTags.includes(9) && styles.selectedTag]}>
+          <Text style={styles.tagText}>#ロマンティック</Text>
+        </Animated.View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => handleTagPress(10)}>
+        <Animated.View style={[styles.tag, styles.tag_10, anim_10Style, selectedTags.includes(10) && styles.selectedTag]}>
+          <Text style={styles.tagText}>#自然を満喫</Text>
+        </Animated.View>
+      </TouchableOpacity>
+      <Text style={[styles.text]}>{count}/5</Text>
       <Link href='/home' asChild>
         <Button
           mode="text"
@@ -229,6 +268,11 @@ const styles = StyleSheet.create({
   tagText: {
     fontSize: 14,
     color: '#FFFFFF'
+  },
+  selectedTag: {
+    borderStyle: 'solid',
+    borderColor: '#FFFFFF',
+    borderWidth: 1,
   },
   text: {
     fontSize: 28,

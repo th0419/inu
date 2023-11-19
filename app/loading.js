@@ -4,13 +4,11 @@ import { Svg, G, Path } from 'react-native-svg';
 
 const Loading = () => {
 
-  // SVG全体に対するアニメーション値を管理するためのRef
   const svgAnim_1_1 = useRef(new Animated.Value(0)).current;
   const svgAnim_1_2 = useRef(new Animated.ValueXY).current;
   const svgAnim_2_1 = useRef(new Animated.Value(0)).current;
   const svgAnim_2_2 = useRef(new Animated.ValueXY).current;
 
-  // コンポーネントがマウントされたときにアニメーションをトリガーするEffect
   useEffect(() => {
 
     const firstAnimation_1 = Animated.timing(svgAnim_1_1, {
@@ -23,7 +21,6 @@ const Loading = () => {
       duration: 1000,
       useNativeDriver: false
     });
-    // 第一のアニメーションが終了したら第二のアニメーションを開始する
     firstAnimation_1.start(() => {
       secondAnimation_1.start();
     });
@@ -39,27 +36,23 @@ const Loading = () => {
       duration: 1000,
       useNativeDriver: false
     }).start();
-    // コンポーネントがアンマウントされるときにアニメーションをクリーンアップする
+
     return () => {
       firstAnimation_1.stop();
       secondAnimation_1.stop();
     };
   }, [svgAnim_1_1, svgAnim_1_2, svgAnim_2_1, svgAnim_2_2]);
 
-  // SVGに適用するスタイル、アニメーション値に基づいて透明度を変更
   const svgStyle_1 = {
     opacity: svgAnim_1_1
   };
-  // SVGに適用するスタイル、アニメーション値に基づいて透明度を変更
   const svgStyle_2 = {
     opacity: svgAnim_2_1
   };
 
   return (
     <View style={styles.container}>
-      {/* SVG全体にアニメーションを適用するAnimated.View */}
       <Animated.View style={[styles.h1Logo_1, svgStyle_1, { transform: svgAnim_1_2.getTranslateTransform() }]}>
-        {/* viewBoxとfillを持つSVG要素 */}
         <Svg viewBox="0 0 605 177" fill="#FFFFFF">
           <G style={[styles.h1Logo_1Contents]}>
             <Path d="m220.49,87.87c-.2,24.4-.38,48.81-.65,73.21-.03,2.49-.34,5.05-1.03,7.44-1.65,5.76-5.57,8.53-11.55,8.26-5.63-.25-11.25-.64-16.87-1.13-14.27-1.23-28.53-2.53-42.79-3.83-3.63-.33-7.25-.76-10.89-1.05-1.32-.1-2.11-.66-2.86-1.75-9.92-14.5-19.9-28.96-29.86-43.44-.23-.33-.47-.65-.71-.96-3.52-4.57-8.18-4.74-11.82-.21-3.44,4.29-6.68,8.75-9.93,13.19-6.03,8.24-12.03,16.5-17.98,24.8-1.08,1.51-2.26,2.1-4.15,1.93-11.75-1.07-23.51-2.03-35.27-3.05-4.95-.43-9.9-.94-14.85-1.43-5.71-.57-8.85-3.9-9.01-9.61C.15,145.08,0,139.91.01,134.74.09,99.39.19,64.04.35,28.7c0-1.87.33-3.87,1.03-5.59,1.6-3.88,4.45-6.19,8.9-6.56,14.34-1.21,28.65-2.64,42.98-3.88,19.95-1.73,39.9-3.36,59.86-5.02,16.98-1.41,33.96-2.82,50.94-4.2,13.75-1.12,27.49-2.19,41.24-3.3,9.2-.75,14.48,4.01,14.57,13.32.24,24.8.41,49.6.62,74.41Zm-32.39-1.73c0-1.11.17-3.31-.03-5.48-1-11.03-5.54-20.25-14.39-27.08-7.44-5.74-16.89-5.84-24.64-.51-4.63,3.19-8.06,7.43-10.7,12.35-4.58,8.52-5.04,17.72-4.49,27.09.53,9.03,4.06,16.82,9.95,23.53,5.66,6.45,12.71,9.78,21.42,8.08,5.84-1.14,10.34-4.67,13.99-9.22,6.49-8.07,9.64-17.28,8.89-28.77Zm-124.08,1.22c0-1.44.02-2.5,0-3.56-.17-8.79-2.86-16.7-8.61-23.4-7.61-8.87-19.15-8.67-26.38.51-7.2,9.14-9.33,19.75-8.22,31.1.69,7.03,2.78,13.65,7.03,19.4,3.81,5.16,8.65,8.63,15.41,8.28,6.3-.32,10.74-3.88,14.15-8.81,4.96-7.17,7.03-15.21,6.62-23.52Z"/>
@@ -68,7 +61,6 @@ const Loading = () => {
           </G>
         </Svg>
       </Animated.View>
-      {/* 別のG要素内の2番目のパスセット */}
       <Animated.View style={[styles.h1Logo_2, svgStyle_2, { transform: svgAnim_2_2.getTranslateTransform() }]}>
         <Svg viewBox="0 0 700 200" fill="#FFFFFF">
           <G style={[styles.h1Logo_2Contents]}>
@@ -82,7 +74,6 @@ const Loading = () => {
   );
 };
 
-// コンポーネントのためのスタイルシート
 const styles = StyleSheet.create({
   container: {
     width: '100%',
@@ -112,5 +103,4 @@ const styles = StyleSheet.create({
   }
 });
 
-// コンポーネントをエクスポート
 export default Loading;

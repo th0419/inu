@@ -1,14 +1,23 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import { Link, Redirect } from "expo-router";
+import React, { useEffect } from "react";
+import { useNavigation } from "@react-navigation/native";
+import Loading from "./loading";
 
-const index = () => {
+const Index = () => {
 
-  return <Redirect href='/home/' />;
-}
+  const navigation = useNavigation();
 
-export default index;
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigation.navigate('select'); // リダイレクト先の画面名に合わせて変更
+    }, 4000);
 
-const styles = StyleSheet.create({
+    return () => clearTimeout(timer);
+  }, [navigation]);
 
-});
+  return (
+    // ここにローディング画面のコンポーネントを配置する
+    <Loading />
+  );
+};
+
+export default Index;

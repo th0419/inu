@@ -12,7 +12,11 @@ export default function Layout() {
         fontWeight: 'bold'
       }
     }}>
-      <Stack.Screen name='home' />
+      <Stack.Screen name='index' options={{headerShown: false}} />
+      <Stack.Screen name='loading' options={{headerShown: false}} />
+      <Stack.Screen name='select' options={{headerShown: false}} />
+      <Stack.Screen name='relaxation' options={{headerShown: false}} />
+      <Stack.Screen name='home' options={{headerShown: false}} />
       <Stack.Screen name='profile' />
     </Stack>
   );

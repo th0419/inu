@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Link, useLocalSearchParams } from "expo-router";
 
-const profile = () => {
+const Profile = () => {
 
   const params = useLocalSearchParams();
 
@@ -15,7 +15,7 @@ const profile = () => {
   );
 }
 
-export default profile;
+export default Profile;
 
 const styles = StyleSheet.create({
 

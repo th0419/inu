@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Link } from "expo-router";
 
-const home = () => {
+const Home = () => {
 
   return (
     <View>
@@ -20,7 +20,7 @@ const home = () => {
   );
 }
 
-export default home;
+export default Home;
 
 const styles = StyleSheet.create({
   

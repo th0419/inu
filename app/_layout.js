@@ -6,22 +6,43 @@ import { Ionicons } from '@expo/vector-icons';
 
 export default function Layout() {
 
+  const fadeIn = ({ current }) => ({
+    cardStyle: {
+      opacity: current.progress
+    }
+  });
+
   return (
     <Stack
       screenOptions={{
         headerStyle: {
-          height: 300,
           backgroundColor: '#444444'
         }
       }}
     >
       <Stack.Screen name='index' options={{headerShown: false}} />
       <Stack.Screen name='loading' options={{headerShown: false}} />
-      <Stack.Screen name='select' options={{headerShown: false}} />
+      <Stack.Screen
+        name='select'
+        options={{
+          animation: fadeIn,
+          headerShown: false,
+          gestureEnabled: false
+        }}
+      />
       <Stack.Screen name='relaxation' options={{headerShown: false}} />
       <Stack.Screen
-        name='home'
+        name='homeLoading'
         options={{
+          animation: fadeIn,
+          headerShown: false,
+          gestureEnabled: false
+        }}
+      />
+      <Stack.Screen
+        name='(tabs)'
+        options={{
+          animation: fadeIn,
           headerShown: true,
           headerTitle: () => false,
           headerLeft: () => (
@@ -39,8 +60,9 @@ export default function Layout() {
             </Svg>
           ),
           headerRight: () => (
-            <Ionicons name="search" size={32} color="#FFFFFF" style={{marginRight: 15}} />
-          )
+            <Ionicons name="search" size={30} color="#FFFFFF" style={{marginRight: 15}} />
+          ),
+          gestureEnabled: false
         }}
       />
       <Stack.Screen name='profile' />

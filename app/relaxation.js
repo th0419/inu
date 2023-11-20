@@ -183,7 +183,7 @@ const Relaxation = () => {
         </Animated.View>
       </TouchableOpacity>
       <Text style={[styles.text]}>{count}/5</Text>
-      <Link href='/home' asChild>
+      <Link href='/homeLoading' asChild>
         <Button
           mode="text"
           textColor="#FFFFFF"

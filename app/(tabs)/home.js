@@ -27,7 +27,7 @@ const Home = () => {
       <Animated.ScrollView style={[animStyle]}>
         <View style={[styles.mainvisual]}>
           <Image
-            source={require('../img/home/mainvisualDemo.webp')}
+            source={require('../../img/home/mainvisualDemo.webp')}
             style={[styles.mainvisualImg]}
           />
           <Text style={[styles.mainvisualTitle]}>"音と熱の世界"</Text>

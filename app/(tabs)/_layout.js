@@ -51,6 +51,13 @@ export default function TabsLayout () {
           headerLeft: () => (
             <Text style={{fontSize: 14, fontWeight: 'bold', color: '#FFFFFF', marginLeft: 25}}>@KazuyaKinoshita</Text>
           ),
+          headerRight: () => (
+            <View style={[styles.drawer]}>
+              <View style={[styles.drawerBar, styles.drawerBar_1]}></View>
+              <View style={[styles.drawerBar, styles.drawerBar_2]}></View>
+              <View style={[styles.drawerBar, styles.drawerBar_3]}></View>
+            </View>
+          ),
           tabBarIcon: () => (
             <MaterialCommunityIcons name="account" size={35} color="#FFFFFF" style={{marginTop: 5}} />
           ),
@@ -61,3 +68,30 @@ export default function TabsLayout () {
     </Tabs>
   );
 }
+
+const styles = StyleSheet.create({
+  drawer: {
+    width: 20,
+    height: 20,
+    marginBottom: 5,
+    marginRight: 32.5,
+    position: 'relative'
+  },
+  drawerBar: {
+    width: '100%',
+    height: 2,
+    backgroundColor: '#FFFFFF',
+    position: 'absolute',
+    left: 0
+  },
+  drawerBar_1: {
+    top: 0
+  },
+  drawerBar_2: {
+    top: '50%',
+    transform: [{ translateX: 0 }, { translateY: -1 }]
+  },
+  drawerBar_3: {
+    bottom: 0
+  }
+});

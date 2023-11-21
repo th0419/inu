@@ -34,6 +34,52 @@ const Home = () => {
           <Text style={[styles.mainvisualUser]}>@KazuyaKinoshita</Text>
           <Text style={[styles.mainvisualDeadline]}>17日後有料コンテンツ</Text>
         </View>
+        <View style={[styles.contents]}>
+          <Text style={[styles.contentsText_1]}>癒し, 自然, ヨガ</Text>
+          <View style={[styles.contentsContents_1]}>
+            <View style={[styles.contentsContents_1Contents]}></View>
+            <View style={[styles.contentsContents_1Contents]}></View>
+            <View style={[styles.contentsContents_1Contents]}></View>
+            <View style={[styles.contentsContents_1Contents]}></View>
+            <View style={[styles.contentsContents_1Contents]}></View>
+            <View style={[styles.contentsContents_1Contents]}></View>
+            <View style={[styles.contentsContents_1Contents]}></View>
+            <View style={[styles.contentsContents_1Contents]}></View>
+          </View>
+          <Text style={[styles.contentsText_1]}>フォローユーザーの最新投稿</Text>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={[styles.contentsContents_2]}
+          >
+            <View style={[styles.contentsContents_2Contents]}></View>
+            <View style={[styles.contentsContents_2Contents]}></View>
+            <View style={[styles.contentsContents_2Contents]}></View>
+            <View style={[styles.contentsContents_2Contents]}></View>
+          </ScrollView>
+          <Text style={[styles.contentsText_1]}>最近人気上昇中の投稿</Text>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={[styles.contentsContents_2]}
+          >
+            <View style={[styles.contentsContents_2Contents]}></View>
+            <View style={[styles.contentsContents_2Contents]}></View>
+            <View style={[styles.contentsContents_2Contents]}></View>
+            <View style={[styles.contentsContents_2Contents]}></View>
+          </ScrollView>
+          <Text style={[styles.contentsText_2]}>一部有料コンテンツ</Text>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={[styles.contentsContents_2]}
+          >
+            <View style={[styles.contentsContents_2Contents]}></View>
+            <View style={[styles.contentsContents_2Contents]}></View>
+            <View style={[styles.contentsContents_2Contents]}></View>
+            <View style={[styles.contentsContents_2Contents]}></View>
+          </ScrollView>
+        </View>
       </Animated.ScrollView>
     </LinearGradient>
   );
@@ -59,7 +105,7 @@ const styles = StyleSheet.create({
     borderRadius: 15
   },
   mainvisualTitle: {
-    marginTop: 15,
+    marginTop: 10,
     fontSize: 21,
     color: '#FFFFFF'
   },
@@ -74,5 +120,57 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     color: '#FF0000'
+  },
+  contents: {
+    width: '100%',
+    marginBottom: 30
+  },
+  contentsText_1: {
+    marginTop: 60,
+    marginLeft: 15,
+    fontSize: 21,
+    fontWeight: 'bold',
+    color: '#FFFFFF'
+  },
+  contentsText_2: {
+    marginTop: 60,
+    marginLeft: 15,
+    fontSize: 21,
+    fontWeight: 'bold',
+    color: '#FF0000'
+  },
+  contentsContents_1: {
+    width: '100%',
+    display: 'flex',
+    marginTop: 10,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    flexWrap: 'wrap'
+  },
+  contentsContents_1Contents: {
+    width: 150,
+    height: 112.5,
+    borderRadius: 2.5,
+    backgroundColor: 'lightgrey',
+    marginTop: 10,
+    marginLeft: 5,
+    marginRight: 5
+  },
+  contentsContents_2: {
+    width: '100%',
+    display: 'flex',
+    marginTop: 10,
+    marginLeft: 27.5,
+    flexDirection: 'row',
+    flexWrap: 'wrap'
+  },
+  contentsContents_2Contents: {
+    width: 150,
+    height: 112.5,
+    borderRadius: 2.5,
+    backgroundColor: 'lightgrey',
+    marginTop: 10,
+    marginLeft: 5,
+    marginRight: 5
   }
 });

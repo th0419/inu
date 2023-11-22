@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { StyleSheet, View, Text, TextInput, Animated, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, TextInput, Animated, TouchableWithoutFeedback } from 'react-native';
 import { Button } from 'react-native-paper';
 import { Link } from "expo-router";
 
@@ -132,56 +132,56 @@ const Relaxation = () => {
   return (
     <View style={[styles.container]}>
       <TextInput style={[styles.search]}> serach...</TextInput>
-      <TouchableOpacity onPress={() => handleTagPress(1)}>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(1)}>
         <Animated.View style={[styles.tag, styles.tag_1, anim_1Style, selectedTags.includes(1) && styles.selectedTag]}>
           <Text style={styles.tagText}>#歴史的な場所</Text>
         </Animated.View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTagPress(2)}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(2)}>
         <Animated.View style={[styles.tag, styles.tag_2, anim_2Style, selectedTags.includes(2) && styles.selectedTag]}>
           <Text style={styles.tagText}>#瞑想</Text>
         </Animated.View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTagPress(3)}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(3)}>
         <Animated.View style={[styles.tag, styles.tag_3, anim_3Style, selectedTags.includes(3) && styles.selectedTag]}>
           <Text style={styles.tagText}>#冒険とアウトドア</Text>
         </Animated.View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTagPress(4)}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(4)}>
         <Animated.View style={[styles.tag, styles.tag_4, anim_4Style, selectedTags.includes(4) && styles.selectedTag]}>
           <Text style={styles.tagText}>#文化と芸術</Text>
         </Animated.View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTagPress(5)}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(5)}>
         <Animated.View style={[styles.tag, styles.tag_5, anim_5Style, selectedTags.includes(5) && styles.selectedTag]}>
           <Text style={styles.tagText}>#自然の奇跡</Text>
         </Animated.View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTagPress(6)}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(6)}>
         <Animated.View style={[styles.tag, styles.tag_6, anim_6Style, selectedTags.includes(6) && styles.selectedTag]}>
           <Text style={styles.tagText}>#スピリチュアル</Text>
         </Animated.View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTagPress(7)}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(7)}>
         <Animated.View style={[styles.tag, styles.tag_7, anim_7Style, selectedTags.includes(7) && styles.selectedTag]}>
           <Text style={styles.tagText}>#動物</Text>
         </Animated.View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTagPress(8)}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(8)}>
         <Animated.View style={[styles.tag, styles.tag_8, anim_8Style, selectedTags.includes(8) && styles.selectedTag]}>
           <Text style={styles.tagText}>#フェスティバル</Text>
         </Animated.View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTagPress(9)}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(9)}>
         <Animated.View style={[styles.tag, styles.tag_9, anim_9Style, selectedTags.includes(9) && styles.selectedTag]}>
           <Text style={styles.tagText}>#ロマンティック</Text>
         </Animated.View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTagPress(10)}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(10)}>
         <Animated.View style={[styles.tag, styles.tag_10, anim_10Style, selectedTags.includes(10) && styles.selectedTag]}>
           <Text style={styles.tagText}>#自然を満喫</Text>
         </Animated.View>
-      </TouchableOpacity>
+      </TouchableWithoutFeedback>
       <Text style={[styles.text]}>{count}/5</Text>
       <Link href='/homeLoading' asChild>
         <Button
@@ -272,7 +272,7 @@ const styles = StyleSheet.create({
   selectedTag: {
     borderStyle: 'solid',
     borderColor: '#FFFFFF',
-    borderWidth: 1,
+    borderWidth: 1
   },
   text: {
     fontSize: 28,

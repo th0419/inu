@@ -272,7 +272,7 @@ const styles = StyleSheet.create({
   selectedTag: {
     borderStyle: 'solid',
     borderColor: '#FFFFFF',
-    borderWidth: 1,
+    borderWidth: 1
   },
   text: {
     fontSize: 28,

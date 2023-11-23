@@ -1,6 +1,5 @@
 import React from "react";
 import { Stack } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
 import { Svg, G, Path } from 'react-native-svg';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -45,6 +44,18 @@ export default function Layout() {
           animation: fadeIn,
           headerShown: false,
           gestureEnabled: false
+        }}
+      />
+      <Stack.Screen
+        name='contents'
+        options={{
+          headerShown: false
+        }}
+      />
+      <Stack.Screen
+        name='usersContents'
+        options={{
+          headerShown: false
         }}
       />
     </Stack>

@@ -9,7 +9,7 @@ const Index = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigation.navigate('select');
-    }, 4000);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, [navigation]);

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { StyleSheet, View, Text, TextInput, Animated, TouchableWithoutFeedback } from 'react-native';
 import { Button } from 'react-native-paper';
 import { Link } from "expo-router";
+import { Ionicons } from '@expo/vector-icons';
 
 const Relaxation = () => {
 
@@ -131,7 +132,18 @@ const Relaxation = () => {
 
   return (
     <View style={[styles.container]}>
-      <TextInput style={[styles.search]}> serach...</TextInput>
+      <View style={[styles.searchContents]}>
+        <TextInput
+          placeholder=" Serach..."
+          style={[styles.searchContentsText]}
+        />
+        <Button
+          labelStyle={{lineHeight: 28}}
+          style={styles.searchContentsButton}
+        >
+          <Ionicons name="search" size={28} color="rgba(000, 000, 000, .25)" />
+        </Button>
+      </View>
       <TouchableWithoutFeedback onPress={() => handleTagPress(1)}>
         <Animated.View style={[styles.tag, styles.tag_1, anim_1Style, selectedTags.includes(1) && styles.selectedTag]}>
           <Text style={styles.tagText}>#歴史的な場所</Text>
@@ -182,19 +194,22 @@ const Relaxation = () => {
           <Text style={styles.tagText}>#自然を満喫</Text>
         </Animated.View>
       </TouchableWithoutFeedback>
-      <Text style={[styles.text]}>{count}/5</Text>
-      <Link href='/homeLoading' asChild>
-        <Button
-          mode="text"
-          textColor="#FFFFFF"
-          buttonColor="transparent"
-          contentStyle={{height: 'auto'}} // ボタン内のコンテンツのスタイル
-          labelStyle={{fontSize: 28, fontWeight: '400', lineHeight: 28}} // ボタンのテキストスタイル
-          style={styles.button}
-        >
-          inuを始める。
-        </Button>
-      </Link>
+      <View style={[styles.textContents]}>
+        <Text style={[styles.textContentsText]}>{count}/5</Text>
+        <Link href='/homeLoading' asChild>
+          <Button
+            disabled={count === 0}
+            mode="text"
+            textColor={count === 0 ? 'rgba(255, 255, 255, .25)' : '#FFFFFF'}
+            buttonColor="transparent"
+            contentStyle={{height: 'auto'}}
+            labelStyle={{fontSize: 21, fontWeight: '400', lineHeight: 32}}
+            style={styles.textContentsButton}
+          >
+            inuを始める。
+          </Button>
+        </Link>
+      </View>
     </View>
   );
 }
@@ -211,17 +226,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     position: 'relative'
   },
-  search: {
+  searchContents: {
     width: 250,
-    height: 48,
+    height: 42,
     borderRadius: 5,
     backgroundColor: '#FFFFFF',
-    fontSize: 28,
-    color: 'rgba(000, 000, 000, .25)',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     position: 'absolute',
-    top: 100,
+    top: 125,
     left: '50%',
     transform: [{ translateX: -125 }, { translateY: 0 }]
+  },
+  searchContentsText: {
+    fontSize: 21,
+    color: 'rgba(000, 000, 000, .25)',
+  },
+  searchContentsButton: {
+    paddingLeft: 125
   },
   tag: {
     height: 28,
@@ -236,31 +260,31 @@ const styles = StyleSheet.create({
   },
   tag_1: {
     marginTop: 0,
-    transform: [{ translateX: -100 }, { translateY: 0 }]
+    transform: [{ translateX: -25 }, { translateY: 0 }]
   },
   tag_2: {
-    transform: [{ translateX: 50 }, { translateY: 0 }]
+    transform: [{ translateX: 100 }, { translateY: 0 }]
   },
   tag_3: {
-    transform: [{ translateX: -75 }, { translateY: 0 }]
+    transform: [{ translateX: -100 }, { translateY: 0 }]
   },
   tag_4: {
     transform: [{ translateX: 50 }, { translateY: 0 }]
   },
   tag_5: {
-    transform: [{ translateX: -50 }, { translateY: 0 }]
-  },
-  tag_6: {
-    transform: [{ translateX: 55 }, { translateY: 0 }]
-  },
-  tag_7: {
     transform: [{ translateX: -75 }, { translateY: 0 }]
   },
+  tag_6: {
+    transform: [{ translateX: 75 }, { translateY: 0 }]
+  },
+  tag_7: {
+    transform: [{ translateX: -125 }, { translateY: 0 }]
+  },
   tag_8: {
-    transform: [{ translateX: 50 }, { translateY: 0 }]
+    transform: [{ translateX: 25 }, { translateY: 0 }]
   },
   tag_9: {
-    transform: [{ translateX: -50 }, { translateY: 0 }]
+    transform: [{ translateX: -75 }, { translateY: 0 }]
   },
   tag_10: {
     transform: [{ translateX: 100 }, { translateY: 0 }]
@@ -274,18 +298,22 @@ const styles = StyleSheet.create({
     borderColor: '#FFFFFF',
     borderWidth: 1
   },
-  text: {
-    fontSize: 28,
-    color: '#FFFFFF',
+  textContents: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     position: 'absolute',
-    bottom: 100,
-    left: 75
+    bottom: 112.5,
+    left: 0
   },
-  button: {
-    position: 'absolute',
-    bottom: 100,
-    right: 25,
-    transform: [{ translateX: 0 }, { translateY: 8 }]
+  textContentsText: {
+    fontSize: 28,
+    color: '#FFFFFF'
+  },
+  textContentsButton: {
+    transform: [{ translateX: 30 }, { translateY: 0 }]
   }
 });
 

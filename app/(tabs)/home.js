@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { StyleSheet, Text, View, Image, Animated } from "react-native";
-import { Link } from "expo-router";
 import { ScrollView } from "react-native-gesture-handler";
+import { Link } from "expo-router";
 import { LinearGradient } from 'expo-linear-gradient';
 
 const Home = () => {
@@ -26,25 +26,67 @@ const Home = () => {
     >
       <Animated.ScrollView style={[animStyle]}>
         <View style={[styles.mainvisual]}>
-          <Image
-            source={require('../../img/home/mainvisualDemo.webp')}
-            style={[styles.mainvisualImg]}
-          />
+          <Link href='/contents'>
+            <Image
+              source={require('../../img/home/mainvisualDemo.webp')}
+              style={[styles.mainvisualImg]}
+            />
+          </Link>
           <Text style={[styles.mainvisualTitle]}>"音と熱の世界"</Text>
-          <Text style={[styles.mainvisualUser]}>@KazuyaKinoshita</Text>
+          <Text style={[styles.mainvisualUser]}>@KanatoEndo</Text>
           <Text style={[styles.mainvisualDeadline]}>17日後有料コンテンツ</Text>
         </View>
         <View style={[styles.contents]}>
-          <Text style={[styles.contentsText_1]}>癒し, 自然, ヨガ</Text>
+          <Text style={[styles.contentsText_1]}>文化と芸術, フェスティバル</Text>
           <View style={[styles.contentsContents_1]}>
-            <View style={[styles.contentsContents_1Contents]}></View>
-            <View style={[styles.contentsContents_1Contents]}></View>
-            <View style={[styles.contentsContents_1Contents]}></View>
-            <View style={[styles.contentsContents_1Contents]}></View>
-            <View style={[styles.contentsContents_1Contents]}></View>
-            <View style={[styles.contentsContents_1Contents]}></View>
-            <View style={[styles.contentsContents_1Contents]}></View>
-            <View style={[styles.contentsContents_1Contents]}></View>
+            <Link href='/contents' style={[styles.contentsContents_1Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_1ContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.contentsContents_1Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_1ContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.contentsContents_1Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_1ContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.contentsContents_1Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_1ContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.contentsContents_1Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_1ContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.contentsContents_1Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_1ContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.contentsContents_1Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_1ContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.contentsContents_1Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_1ContentsImage]}
+              />
+            </Link>
           </View>
           <Text style={[styles.contentsText_1]}>フォローユーザーの最新投稿</Text>
           <ScrollView
@@ -52,10 +94,30 @@ const Home = () => {
             showsHorizontalScrollIndicator={false}
             style={[styles.contentsContents_2]}
           >
-            <View style={[styles.contentsContents_2Contents]}></View>
-            <View style={[styles.contentsContents_2Contents]}></View>
-            <View style={[styles.contentsContents_2Contents]}></View>
-            <View style={[styles.contentsContents_2Contents]}></View>
+            <Link href='/contents' style={[styles.contentsContents_2Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_2ContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.contentsContents_2Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_2ContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.contentsContents_2Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_2ContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.contentsContents_2Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_2ContentsImage]}
+              />
+            </Link>
           </ScrollView>
           <Text style={[styles.contentsText_1]}>最近人気上昇中の投稿</Text>
           <ScrollView
@@ -63,10 +125,30 @@ const Home = () => {
             showsHorizontalScrollIndicator={false}
             style={[styles.contentsContents_2]}
           >
-            <View style={[styles.contentsContents_2Contents]}></View>
-            <View style={[styles.contentsContents_2Contents]}></View>
-            <View style={[styles.contentsContents_2Contents]}></View>
-            <View style={[styles.contentsContents_2Contents]}></View>
+            <Link href='/contents' style={[styles.contentsContents_2Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_2ContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.contentsContents_2Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_2ContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.contentsContents_2Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_2ContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.contentsContents_2Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_2ContentsImage]}
+              />
+            </Link>
           </ScrollView>
           <Text style={[styles.contentsText_2]}>一部有料コンテンツ</Text>
           <ScrollView
@@ -74,10 +156,30 @@ const Home = () => {
             showsHorizontalScrollIndicator={false}
             style={[styles.contentsContents_2]}
           >
-            <View style={[styles.contentsContents_2Contents]}></View>
-            <View style={[styles.contentsContents_2Contents]}></View>
-            <View style={[styles.contentsContents_2Contents]}></View>
-            <View style={[styles.contentsContents_2Contents]}></View>
+            <Link href='/contents' style={[styles.contentsContents_2Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_2ContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.contentsContents_2Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_2ContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.contentsContents_2Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_2ContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.contentsContents_2Contents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.contentsContents_2ContentsImage]}
+              />
+            </Link>
           </ScrollView>
         </View>
       </Animated.ScrollView>
@@ -143,18 +245,21 @@ const styles = StyleSheet.create({
     width: '100%',
     display: 'flex',
     marginTop: 10,
+    marginLeft: 27.5,
     flexDirection: 'row',
-    justifyContent: 'center',
     flexWrap: 'wrap'
   },
   contentsContents_1Contents: {
     width: 150,
     height: 112.5,
-    borderRadius: 2.5,
-    backgroundColor: 'lightgrey',
     marginTop: 10,
     marginLeft: 5,
     marginRight: 5
+  },
+  contentsContents_1ContentsImage: {
+    width: 150,
+    height: 112.5,
+    borderRadius: 5
   },
   contentsContents_2: {
     width: '100%',
@@ -167,10 +272,14 @@ const styles = StyleSheet.create({
   contentsContents_2Contents: {
     width: 150,
     height: 112.5,
-    borderRadius: 2.5,
-    backgroundColor: 'lightgrey',
+    borderRadius: 5,
     marginTop: 10,
     marginLeft: 5,
     marginRight: 5
+  },
+  contentsContents_2ContentsImage: {
+    width: 150,
+    height: 112.5,
+    borderRadius: 5
   }
 });

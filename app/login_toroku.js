@@ -1,9 +1,9 @@
+import { Link } from 'expo-router';
 import React, { useEffect, useRef } from 'react';
 import { View, Image, Animated, StyleSheet, Dimensions, Text, Linking } from 'react-native';
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
-const imageHeight = 300; // 调整为你的图片高度
 
 const Marquee = () => {
   const scrollY = useRef(new Animated.Value(0)).current;
@@ -11,7 +11,7 @@ const Marquee = () => {
   useEffect(() => {
     const animation = Animated.loop(
       Animated.timing(scrollY, {
-        toValue: -imageHeight * 2, // 从上往下移动
+        toValue: windowHeight, // 將 toValue 調整為 windowHeight，使跑馬燈從上往下
         duration: 5000,
         useNativeDriver: true,
       })
@@ -26,7 +26,6 @@ const Marquee = () => {
 
   return (
     <View style={styles.marqueeContainer}>
-      {/* 当前组的图片 */}
       <Animated.View
         style={[
           styles.marquee,
@@ -39,22 +38,6 @@ const Marquee = () => {
         <Image style={styles.image} source={require('../img/home/mainvisualDemo.webp')} />
         <Image style={styles.image} source={require('../img/home/mainvisualDemo.webp')} />
       </Animated.View>
-
-      {/* 下一组的图片，初始时处于上方不可见状态 */}
-      <Animated.View
-        style={[
-          styles.marquee,
-          {
-            transform: [{ translateY: scrollY.interpolate({ inputRange: [-imageHeight * 2, -imageHeight], outputRange: [0, windowHeight] }) }],
-            opacity: scrollY.interpolate({ inputRange: [-imageHeight * 2, -imageHeight, 0], outputRange: [0, 0, 1] }),
-          },
-        ]}
-      >
-        <Image style={styles.image} source={require('../img/home/mainvisualDemo.webp')} />
-        <Image style={styles.image} source={require('../img/home/mainvisualDemo.webp')} />
-        <Image style={styles.image} source={require('../img/home/mainvisualDemo.webp')} />
-      </Animated.View>
-
       <View style={styles.loginContainer}>
         <Login />
       </View>
@@ -66,12 +49,16 @@ const Login = () => {
   return (
     <View style={styles.container}>
       <View style={styles.bottomButtonContainer}>
-        <Text style={styles.buttonText} onPress={() => Linking.openURL("/screen1")}>
-          会員登録
-        </Text>
-        <Text style={styles.buttonText} onPress={() => Linking.openURL("/screen2")}>
-          ログイン
-        </Text>
+        <Link href="/toroku" style={styles.buttonText}>
+          <Text style={styles.buttonText}>
+              会員登録
+            </Text>
+        </Link>
+        <Link href="/login" style={styles.buttonText}>
+          <Text style={styles.buttonText}>
+              ログイン
+            </Text>
+        </Link>
       </View>
     </View>
   );
@@ -83,22 +70,18 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   marquee: {
-    flexDirection: 'column',
+    flexDirection: 'column-reverse', // 將方向調整為由上往下
     overflow: 'hidden',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-  },
-  image: {
-    width: windowWidth,
-    height: imageHeight,
   },
   loginContainer: {
     position: 'absolute',
     bottom: 0,
     width: '100%',
-    paddingVertical: 20,
+    paddingVertical: 20, // 調整區域的上下長度更長
+  },
+  image: {
+    width: windowWidth,
+    marginBottom: -5, // 修正图像之间的空白，调整为负边距
   },
   container: {
     flex: 1,
@@ -112,7 +95,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: 'lightgray',
-    padding: 20,
+    padding: 50,
     elevation: 5,
   },
   buttonText: {
@@ -120,16 +103,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     backgroundColor: '#000',
-    paddingVertical: 20,
-    paddingHorizontal: 40,
+    padding: 20,
     borderRadius: 10,
-    marginVertical: 10,
+    marginHorizontal: 10,
+    marginVertical: 30,
     width: "60%",
   },
 });
 
 export default Marquee;
-
 
 
 

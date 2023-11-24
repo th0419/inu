@@ -1,125 +1,135 @@
-import React, { useRef, useEffect } from "react";
-import { StyleSheet, View, Image, Animated, Dimensions, FlatList, Text } from "react-native";
-import { Link } from "expo-router";
+import React, { useEffect, useRef } from 'react';
+import { View, Image, Animated, StyleSheet, Dimensions, Text, Linking } from 'react-native';
 
-const Login = () => {
-  const screenHeight = Dimensions.get("window").height;
-  const animation = useRef(new Animated.Value(0)).current;
+const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get('window').width;
+const imageHeight = 300; // 调整为你的图片高度
 
-  const startAnimation = () => {
-    Animated.loop(
-      Animated.sequence([
-        Animated.timing(animation, {
-          toValue: 1,
-          duration: 3500,
-          useNativeDriver: false,
-        }),
-        Animated.timing(animation, {
-          toValue: 0,
-          duration: 0,
-          useNativeDriver: false,
-        }),
-      ])
-    ).start();
-  };
+const Marquee = () => {
+  const scrollY = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    startAnimation();
-  }, []);
+    const animation = Animated.loop(
+      Animated.timing(scrollY, {
+        toValue: -imageHeight * 2, // 从上往下移动
+        duration: 5000,
+        useNativeDriver: true,
+      })
+    );
 
-  const data = [
-    { id: '1', image: require('../img/home/mainvisualDemo.webp'), height: 500 },
-    { id: '2', image: require('../img/home/mainvisualDemo.webp'), height: 500 },
-  ];
+    animation.start();
 
-  const translateY = animation.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, screenHeight * (data.length - 1)],
-  });
-
-  const animatedStyle = {
-    transform: [{ translateY }],
-  };
-
-  const renderItem = ({ item }) => (
-    <Image source={item.image} style={[styles.gridImage, { height: item.height }]} />
-  );
+    return () => {
+      animation.stop();
+    };
+  }, [scrollY]);
 
   return (
-    <View style={styles.container}>
-      <Animated.View style={[styles.marqueeContainer, animatedStyle]}>
-        {/* 使用FlatList呈现网格布局 */}
-        <FlatList
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-          numColumns={2}
-          contentContainerStyle={{ paddingBottom: 0 }}
-        />
-        <FlatList
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-          numColumns={2}
-          contentContainerStyle={{ paddingBottom: 0, position: 'absolute', top: -screenHeight * (data.length - 1) }}
-        />
+    <View style={styles.marqueeContainer}>
+      {/* 当前组的图片 */}
+      <Animated.View
+        style={[
+          styles.marquee,
+          {
+            transform: [{ translateY: scrollY }],
+          },
+        ]}
+      >
+        <Image style={styles.image} source={require('../img/home/mainvisualDemo.webp')} />
+        <Image style={styles.image} source={require('../img/home/mainvisualDemo.webp')} />
+        <Image style={styles.image} source={require('../img/home/mainvisualDemo.webp')} />
       </Animated.View>
-      {/* 画面的底部按钮 */}
-      <View style={styles.bottomButtonContainer}>
-        {/* 按钮1 */}
-        <Link to="/screen1" style={styles.button} href={"#"}>
-          <Text style={styles.buttonText}>会員登録</Text>
-        </Link>
 
-        {/* 按钮2 */}
-        <Link to="/screen2" style={styles.button} href={"#"}>
-          <Text style={styles.buttonText}>ログイン</Text>
-        </Link>
+      {/* 下一组的图片，初始时处于上方不可见状态 */}
+      <Animated.View
+        style={[
+          styles.marquee,
+          {
+            transform: [{ translateY: scrollY.interpolate({ inputRange: [-imageHeight * 2, -imageHeight], outputRange: [0, windowHeight] }) }],
+            opacity: scrollY.interpolate({ inputRange: [-imageHeight * 2, -imageHeight, 0], outputRange: [0, 0, 1] }),
+          },
+        ]}
+      >
+        <Image style={styles.image} source={require('../img/home/mainvisualDemo.webp')} />
+        <Image style={styles.image} source={require('../img/home/mainvisualDemo.webp')} />
+        <Image style={styles.image} source={require('../img/home/mainvisualDemo.webp')} />
+      </Animated.View>
+
+      <View style={styles.loginContainer}>
+        <Login />
+      </View>
+    </View>
+  );
+};
+
+const Login = () => {
+  return (
+    <View style={styles.container}>
+      <View style={styles.bottomButtonContainer}>
+        <Text style={styles.buttonText} onPress={() => Linking.openURL("/screen1")}>
+          会員登録
+        </Text>
+        <Text style={styles.buttonText} onPress={() => Linking.openURL("/screen2")}>
+          ログイン
+        </Text>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  marqueeContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    position: 'relative',
   },
-  bottomButtonContainer: {
-    position: "absolute",
-    bottom: 0,
+  marquee: {
+    flexDirection: 'column',
+    overflow: 'hidden',
+    position: 'absolute',
+    top: 0,
     left: 0,
     right: 0,
-    flexDirection: "column",
-    justifyContent: "space-around",
-    alignItems: "center",
-    backgroundColor: "lightgray",
-    padding: 50,
   },
-  button: {
-    backgroundColor: "#000",
+  image: {
+    width: windowWidth,
+    height: imageHeight,
+  },
+  loginContainer: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    paddingVertical: 20,
+  },
+  container: {
+    flex: 1,
+    width: windowWidth,
+    justifyContent: 'flex-end',
+    position: 'absolute',
+    bottom: 0,
+  },
+  bottomButtonContainer: {
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: 'lightgray',
     padding: 20,
-    borderRadius: 10,
-    marginVertical: 15,
-    width: 200,
+    elevation: 5,
   },
   buttonText: {
-    color: "white",
+    color: 'white',
     fontSize: 18,
-    textAlign: "center",
-  },
-  gridImage: {
-    width: Dimensions.get("window").width / 2 - 16,
-    margin: 8,
-    borderRadius: 8,
-  },
-  marqueeContainer: {
-    overflow: 'hidden',
-    position: 'relative',
+    textAlign: 'center',
+    backgroundColor: '#000',
+    paddingVertical: 20,
+    paddingHorizontal: 40,
+    borderRadius: 10,
+    marginVertical: 10,
+    width: "60%",
   },
 });
 
-export default Login;
+export default Marquee;
+
+
 
 

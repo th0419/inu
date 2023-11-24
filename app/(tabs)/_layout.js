@@ -49,7 +49,7 @@ export default function TabsLayout () {
           headerShown: true,
           headerTitle: () => false,
           headerLeft: () => (
-            <Text style={{fontSize: 14, fontWeight: 'bold', color: '#FFFFFF', marginLeft: 25}}>@KazuyaKinoshita</Text>
+            <Text style={{fontSize: 14, fontWeight: 'bold', color: '#FFFFFF', marginLeft: 25}}>@KanatoEndo</Text>
           ),
           headerRight: () => (
             <View style={[styles.drawer]}>

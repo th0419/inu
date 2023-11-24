@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { StyleSheet, View, Text, TextInput, Animated, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, TextInput, Animated, TouchableWithoutFeedback } from 'react-native';
 import { Button } from 'react-native-paper';
 import { Link } from "expo-router";
+import { Ionicons } from '@expo/vector-icons';
 
 const Relaxation = () => {
 
@@ -131,70 +132,84 @@ const Relaxation = () => {
 
   return (
     <View style={[styles.container]}>
-      <TextInput style={[styles.search]}> serach...</TextInput>
-      <TouchableOpacity onPress={() => handleTagPress(1)}>
+      <View style={[styles.searchContents]}>
+        <TextInput
+          placeholder=" Serach..."
+          style={[styles.searchContentsText]}
+        />
+        <Button
+          labelStyle={{lineHeight: 28}}
+          style={styles.searchContentsButton}
+        >
+          <Ionicons name="search" size={28} color="rgba(000, 000, 000, .25)" />
+        </Button>
+      </View>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(1)}>
         <Animated.View style={[styles.tag, styles.tag_1, anim_1Style, selectedTags.includes(1) && styles.selectedTag]}>
           <Text style={styles.tagText}>#歴史的な場所</Text>
         </Animated.View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTagPress(2)}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(2)}>
         <Animated.View style={[styles.tag, styles.tag_2, anim_2Style, selectedTags.includes(2) && styles.selectedTag]}>
           <Text style={styles.tagText}>#瞑想</Text>
         </Animated.View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTagPress(3)}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(3)}>
         <Animated.View style={[styles.tag, styles.tag_3, anim_3Style, selectedTags.includes(3) && styles.selectedTag]}>
           <Text style={styles.tagText}>#冒険とアウトドア</Text>
         </Animated.View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTagPress(4)}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(4)}>
         <Animated.View style={[styles.tag, styles.tag_4, anim_4Style, selectedTags.includes(4) && styles.selectedTag]}>
           <Text style={styles.tagText}>#文化と芸術</Text>
         </Animated.View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTagPress(5)}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(5)}>
         <Animated.View style={[styles.tag, styles.tag_5, anim_5Style, selectedTags.includes(5) && styles.selectedTag]}>
           <Text style={styles.tagText}>#自然の奇跡</Text>
         </Animated.View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTagPress(6)}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(6)}>
         <Animated.View style={[styles.tag, styles.tag_6, anim_6Style, selectedTags.includes(6) && styles.selectedTag]}>
           <Text style={styles.tagText}>#スピリチュアル</Text>
         </Animated.View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTagPress(7)}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(7)}>
         <Animated.View style={[styles.tag, styles.tag_7, anim_7Style, selectedTags.includes(7) && styles.selectedTag]}>
           <Text style={styles.tagText}>#動物</Text>
         </Animated.View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTagPress(8)}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(8)}>
         <Animated.View style={[styles.tag, styles.tag_8, anim_8Style, selectedTags.includes(8) && styles.selectedTag]}>
           <Text style={styles.tagText}>#フェスティバル</Text>
         </Animated.View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTagPress(9)}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(9)}>
         <Animated.View style={[styles.tag, styles.tag_9, anim_9Style, selectedTags.includes(9) && styles.selectedTag]}>
           <Text style={styles.tagText}>#ロマンティック</Text>
         </Animated.View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleTagPress(10)}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => handleTagPress(10)}>
         <Animated.View style={[styles.tag, styles.tag_10, anim_10Style, selectedTags.includes(10) && styles.selectedTag]}>
           <Text style={styles.tagText}>#自然を満喫</Text>
         </Animated.View>
-      </TouchableOpacity>
-      <Text style={[styles.text]}>{count}/5</Text>
-      <Link href='/homeLoading' asChild>
-        <Button
-          mode="text"
-          textColor="#FFFFFF"
-          buttonColor="transparent"
-          contentStyle={{height: 'auto'}} // ボタン内のコンテンツのスタイル
-          labelStyle={{fontSize: 28, fontWeight: '400', lineHeight: 28}} // ボタンのテキストスタイル
-          style={styles.button}
-        >
-          inuを始める。
-        </Button>
-      </Link>
+      </TouchableWithoutFeedback>
+      <View style={[styles.textContents]}>
+        <Text style={[styles.textContentsText]}>{count}/5</Text>
+        <Link href='/homeLoading' asChild>
+          <Button
+            disabled={count === 0}
+            mode="text"
+            textColor={count === 0 ? 'rgba(255, 255, 255, .25)' : '#FFFFFF'}
+            buttonColor="transparent"
+            contentStyle={{height: 'auto'}}
+            labelStyle={{fontSize: 21, fontWeight: '400', lineHeight: 32}}
+            style={styles.textContentsButton}
+          >
+            inuを始める。
+          </Button>
+        </Link>
+      </View>
     </View>
   );
 }
@@ -211,17 +226,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     position: 'relative'
   },
-  search: {
+  searchContents: {
     width: 250,
-    height: 48,
+    height: 42,
     borderRadius: 5,
     backgroundColor: '#FFFFFF',
-    fontSize: 28,
-    color: 'rgba(000, 000, 000, .25)',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     position: 'absolute',
-    top: 100,
+    top: 125,
     left: '50%',
     transform: [{ translateX: -125 }, { translateY: 0 }]
+  },
+  searchContentsText: {
+    fontSize: 21,
+    color: 'rgba(000, 000, 000, .25)',
+  },
+  searchContentsButton: {
+    paddingLeft: 125
   },
   tag: {
     height: 28,
@@ -236,31 +260,31 @@ const styles = StyleSheet.create({
   },
   tag_1: {
     marginTop: 0,
-    transform: [{ translateX: -100 }, { translateY: 0 }]
+    transform: [{ translateX: -25 }, { translateY: 0 }]
   },
   tag_2: {
-    transform: [{ translateX: 50 }, { translateY: 0 }]
+    transform: [{ translateX: 100 }, { translateY: 0 }]
   },
   tag_3: {
-    transform: [{ translateX: -75 }, { translateY: 0 }]
+    transform: [{ translateX: -100 }, { translateY: 0 }]
   },
   tag_4: {
     transform: [{ translateX: 50 }, { translateY: 0 }]
   },
   tag_5: {
-    transform: [{ translateX: -50 }, { translateY: 0 }]
-  },
-  tag_6: {
-    transform: [{ translateX: 55 }, { translateY: 0 }]
-  },
-  tag_7: {
     transform: [{ translateX: -75 }, { translateY: 0 }]
   },
+  tag_6: {
+    transform: [{ translateX: 75 }, { translateY: 0 }]
+  },
+  tag_7: {
+    transform: [{ translateX: -125 }, { translateY: 0 }]
+  },
   tag_8: {
-    transform: [{ translateX: 50 }, { translateY: 0 }]
+    transform: [{ translateX: 25 }, { translateY: 0 }]
   },
   tag_9: {
-    transform: [{ translateX: -50 }, { translateY: 0 }]
+    transform: [{ translateX: -75 }, { translateY: 0 }]
   },
   tag_10: {
     transform: [{ translateX: 100 }, { translateY: 0 }]
@@ -272,20 +296,24 @@ const styles = StyleSheet.create({
   selectedTag: {
     borderStyle: 'solid',
     borderColor: '#FFFFFF',
-    borderWidth: 1,
+    borderWidth: 1
   },
-  text: {
+  textContents: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 112.5,
+    left: 0
+  },
+  textContentsText: {
     fontSize: 28,
-    color: '#FFFFFF',
-    position: 'absolute',
-    bottom: 100,
-    left: 75
+    color: '#FFFFFF'
   },
-  button: {
-    position: 'absolute',
-    bottom: 100,
-    right: 25,
-    transform: [{ translateX: 0 }, { translateY: 8 }]
+  textContentsButton: {
+    transform: [{ translateX: 30 }, { translateY: 0 }]
   }
 });
 

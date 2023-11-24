@@ -8,6 +8,7 @@ const Loading = () => {
   const svgAnim_1_2 = useRef(new Animated.ValueXY).current;
   const svgAnim_2_1 = useRef(new Animated.Value(0)).current;
   const svgAnim_2_2 = useRef(new Animated.ValueXY).current;
+  const imageAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
 
@@ -36,18 +37,27 @@ const Loading = () => {
       duration: 1000,
       useNativeDriver: false
     }).start();
+    Animated.timing(imageAnim, {
+      toValue: 1,
+      delay: 1500,
+      duration: 1000,
+      useNativeDriver: false
+    }).start();
 
     return () => {
       firstAnimation_1.stop();
       secondAnimation_1.stop();
     };
-  }, [svgAnim_1_1, svgAnim_1_2, svgAnim_2_1, svgAnim_2_2]);
+  }, [svgAnim_1_1, svgAnim_1_2, svgAnim_2_1, svgAnim_2_2, imageAnim]);
 
   const svgStyle_1 = {
     opacity: svgAnim_1_1
   };
   const svgStyle_2 = {
     opacity: svgAnim_2_1
+  };
+  const imageStyle = {
+    opacity: imageAnim
   };
 
   return (
@@ -70,6 +80,10 @@ const Loading = () => {
           </G>
         </Svg>
       </Animated.View>
+      <Animated.Image
+        source={require('../img/loading/logoBackground.webp')}
+        style={[styles.logoBackround, imageStyle]}
+      />
     </View>
   );
 };
@@ -100,6 +114,15 @@ const styles = StyleSheet.create({
   },
   h1Logo_2Contents: {
     transform: [{ translateX: 10 }, { translateY: -35 }]
+  },
+  logoBackround: {
+    width: 350,
+    height: 200,
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: [{ translateX: -175 }, { translateY: -100 }],
+    zIndex: -1
   }
 });
 

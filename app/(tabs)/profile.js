@@ -1,41 +1,106 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import { ScrollView } from "react-native-gesture-handler";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Link } from "expo-router";
 
 const Profile = () => {
 
   return (
     <LinearGradient
-    colors={['#444444', '#222222', '#444444']}
+    colors={['#444444', '#222222', '#000000']}
     style={styles.container}
     >
       <ScrollView>
         <View style={[styles.profileImageContainer]}>
-          <View style={[styles.profileImage]}>
-            <MaterialCommunityIcons name="account" size={160} color="#FFFFFF" />
-          </View>
+          <Image
+            source={require('../../img/profile/profileImageDemo.webp')}
+            style={[styles.profileImage]}
+          />
+          <Image
+            source={require('../../img/profile/profileImageBackground.webp')}
+            style={[styles.profileImageBackground]}
+          />
         </View>
         <View style={[styles.profileNameContainer]}>
-          <Text style={[styles.profileName]}>キノシタカズヤ</Text>
-          <Text style={[styles.profileNameUser]}>@KazuyaKinoshita</Text>
+          <Text style={[styles.profileName]}>遠藤叶翔</Text>
+          <Text style={[styles.profileNameUser]}>@KanatoEndo</Text>
         </View>
         <View style={[styles.myList]}>
           <Text style={[styles.myListText]}>マイリスト</Text>
           <View style={[styles.myListContents]}>
-            <View style={[styles.myListContentsContents]}></View>
-            <View style={[styles.myListContentsContents]}></View>
-            <View style={[styles.myListContentsContents]}></View>
-            <View style={[styles.myListContentsContents]}></View>
-            <View style={[styles.myListContentsContents]}></View>
-            <View style={[styles.myListContentsContents]}></View>
-            <View style={[styles.myListContentsContents]}></View>
-            <View style={[styles.myListContentsContents]}></View>
-            <View style={[styles.myListContentsContents]}></View>
-            <View style={[styles.myListContentsContents]}></View>
-            <View style={[styles.myListContentsContents]}></View>
-            <View style={[styles.myListContentsContents]}></View>
+            <Link href='/contents' style={[styles.myListContentsContents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.myListContentsContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.myListContentsContents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.myListContentsContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.myListContentsContents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.myListContentsContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.myListContentsContents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.myListContentsContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.myListContentsContents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.myListContentsContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.myListContentsContents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.myListContentsContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.myListContentsContents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.myListContentsContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.myListContentsContents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.myListContentsContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.myListContentsContents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.myListContentsContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.myListContentsContents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.myListContentsContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.myListContentsContents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.myListContentsContentsImage]}
+              />
+            </Link>
+            <Link href='/contents' style={[styles.myListContentsContents]}>
+              <Image
+                source={require('../../img/home/contentsDemo.webp')}
+                style={[styles.myListContentsContentsImage]}
+              />
+            </Link>
           </View>
         </View>
       </ScrollView>
@@ -62,10 +127,20 @@ const styles = StyleSheet.create({
     borderWidth: .5,
     borderColor: 'rgba(255, 255, 255, .5)',
     borderRadius: 200,
+    backgroundColor: 'lightgrey',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative'
+  },
+  profileImageBackground: {
+    width: 250,
+    height: 250,
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: [{ translateX: -125 }, { translateY: -125 }],
+    zIndex: -1
   },
   profileNameContainer: {
     width: '100%',
@@ -86,7 +161,7 @@ const styles = StyleSheet.create({
     width: '100%',
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
-    backgroundColor: '#444444',
+    backgroundColor: '#000000',
     marginTop: 30,
     paddingBottom: 30
   },
@@ -108,10 +183,14 @@ const styles = StyleSheet.create({
   myListContentsContents: {
     width: 117.5,
     height: 88.125,
-    borderRadius: 2.5,
-    backgroundColor: 'lightgrey',
+    borderRadius: 5,
     marginTop: 5,
     marginLeft: 2.5,
     marginRight: 2.5
+  },
+  myListContentsContentsImage: {
+    width: 117.5,
+    height: 88.125,
+    borderRadius: 5,
   }
 });

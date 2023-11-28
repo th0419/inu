@@ -12,7 +12,7 @@ const Marquee = () => {
     const animation = Animated.loop(
       Animated.timing(scrollY, {
         toValue: windowHeight, // 將 toValue 調整為 windowHeight，使跑馬燈從上往下
-        duration: 5000,
+        duration: 15000,
         useNativeDriver: true,
       })
     );
@@ -34,6 +34,11 @@ const Marquee = () => {
           },
         ]}
       >
+        <Image style={styles.image} source={require('../img/home/mainvisualDemo.webp')} />
+        <Image style={styles.image} source={require('../img/home/mainvisualDemo.webp')} />
+        <Image style={styles.image} source={require('../img/home/mainvisualDemo.webp')} />
+        <Image style={styles.image} source={require('../img/home/mainvisualDemo.webp')} />
+        <Image style={styles.image} source={require('../img/home/mainvisualDemo.webp')} />
         <Image style={styles.image} source={require('../img/home/mainvisualDemo.webp')} />
         <Image style={styles.image} source={require('../img/home/mainvisualDemo.webp')} />
         <Image style={styles.image} source={require('../img/home/mainvisualDemo.webp')} />
@@ -72,6 +77,8 @@ const styles = StyleSheet.create({
   marquee: {
     flexDirection: 'column-reverse', // 將方向調整為由上往下
     overflow: 'hidden',
+    position: 'relative',
+    bottom: -2000,
   },
   loginContainer: {
     position: 'absolute',
@@ -112,6 +119,3 @@ const styles = StyleSheet.create({
 });
 
 export default Marquee;
-
-
-

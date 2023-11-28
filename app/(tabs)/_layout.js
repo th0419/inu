@@ -1,9 +1,12 @@
+import React from "react";
 import { Tabs } from "expo-router";
 import { StyleSheet, View, Text } from 'react-native';
 import { Svg, G, Path } from 'react-native-svg';
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Link } from "expo-router";
+import { Octicons } from '@expo/vector-icons';
 
 export default function TabsLayout () {
 
@@ -52,10 +55,10 @@ export default function TabsLayout () {
             <Text style={{fontSize: 14, fontWeight: 'bold', color: '#FFFFFF', marginLeft: 25}}>@KanatoEndo</Text>
           ),
           headerRight: () => (
-            <View style={[styles.drawer]}>
-              <View style={[styles.drawerBar, styles.drawerBar_1]}></View>
-              <View style={[styles.drawerBar, styles.drawerBar_2]}></View>
-              <View style={[styles.drawerBar, styles.drawerBar_3]}></View>
+            <View>
+              <Link href='/creater' style={{marginRight: 30}}>
+                <Octicons name="three-bars" size={27.5} color="#FFFFFF" />
+              </Link>
             </View>
           ),
           tabBarIcon: () => (
@@ -68,30 +71,3 @@ export default function TabsLayout () {
     </Tabs>
   );
 }
-
-const styles = StyleSheet.create({
-  drawer: {
-    width: 20,
-    height: 20,
-    marginBottom: 5,
-    marginRight: 32.5,
-    position: 'relative'
-  },
-  drawerBar: {
-    width: '100%',
-    height: 2,
-    backgroundColor: '#FFFFFF',
-    position: 'absolute',
-    left: 0
-  },
-  drawerBar_1: {
-    top: 0
-  },
-  drawerBar_2: {
-    top: '50%',
-    transform: [{ translateX: 0 }, { translateY: -1 }]
-  },
-  drawerBar_3: {
-    bottom: 0
-  }
-});
